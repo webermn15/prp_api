@@ -1,6 +1,9 @@
-require('dotenv').config();
-const { Pool } = require('pg');
+const DbWrapper = require('./DbWrapper');
+const Users = require('./Users');
 
-const pool = new Pool();
+const db = new DbWrapper();
+const userDb = new Users(db);
 
-module.exports = pool;
+module.exports = {
+	userDb
+}
