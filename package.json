@@ -1,0 +1,18 @@
+{
+  "name": "power-rank-project",
+  "version": "1.0.0",
+  "description": "centralizing power rankings",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-promise-router": "^3.0.3",
+    "pg": "^7.8.0"
+  }
+}
