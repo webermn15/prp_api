@@ -1,0 +1,1 @@
+INSERT INTO users (username, password_digest) VALUES ('michael', 'test');
