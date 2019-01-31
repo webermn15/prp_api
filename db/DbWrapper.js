@@ -1,6 +1,10 @@
 require('dotenv').config();
 const { Pool } = require('pg');
 
+/* 
+* should wrap logging into these methods to make it easier to trace errors *
+*/
+
 class DbWrapper {
 	constructor() {
 		this.pool = new Pool();

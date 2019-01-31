@@ -21,6 +21,7 @@ INSERT INTO players (tag) VALUES ('Skerzo');
 INSERT INTO players (tag) VALUES ('Hyunnies');
 
 INSERT INTO games (name) VALUES ('Super Smash Bros. Melee');
+INSERT INTO games (name) VALUES ('Super Smash Bros. Ultimate');
 
 INSERT INTO player_rankings (player, ranking, rank) VALUES (1, 1, 1);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (2, 1, 2);

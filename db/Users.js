@@ -3,8 +3,12 @@ class Users {
 		this.db = db;
 	}
 
-	getOneUserById(id) {
-		return this.db.query(`SELECT * FROM users WHERE id = $1`, [id])
+	getOneUserByUsername(username) {
+		return this.db.query(`SELECT * FROM users WHERE username = $1`, [username])
+	}
+
+	createNewUser(username, password) {
+		return this.db.query(`INSERT INTO users(name, email) VALUES($1, $2) RETURNING *`, [username, password])
 	}
 
 }

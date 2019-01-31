@@ -6,8 +6,7 @@ CREATE TYPE scope AS ENUM ('international', 'national', 'regional', 'local');
 
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
-	username TEXT NOT NULL,
-	password_digest TEXT NOT NULL
+	username TEXT NOT NULL
 );
 
 CREATE TABLE regions(
