@@ -16,8 +16,15 @@ CREATE TABLE regions(
 	image BYTEA
 );
 
+CREATE TABLE games(
+	id SERIAL PRIMARY KEY,
+	name TEXT NOT NULL,
+	alias TEXT NOT NULL
+);
+
 CREATE TABLE rankings(
 	id SERIAL PRIMARY KEY,
+	game INT NOT NULL REFERENCES games(id),
 	region INT NOT NULL REFERENCES regions(id),
 	last_ranking INT REFERENCES rankings(id),
 	released DATE NOT NULL,
@@ -30,11 +37,6 @@ CREATE TABLE players(
 	site_user INT REFERENCES users(id),
 	tag TEXT NOT NULL,
 	sponsor_prefix TEXT
-);
-
-CREATE TABLE games(
-	id SERIAL PRIMARY KEY,
-	name TEXT NOT NULL
 );
 
 CREATE TABLE player_rankings(

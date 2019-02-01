@@ -1,8 +1,11 @@
-INSERT INTO users (username, password_digest) VALUES ('michael', 'test');
+INSERT INTO users (username) VALUES ('michael');
 
 INSERT INTO regions (name, level) VALUES ('Chicago', 'local');
 
-INSERT INTO rankings (region, released, detail) VALUES (1, '2019-01-07', 'Panel lead by Unsure.');
+INSERT INTO games (name, alias) VALUES ('Super Smash Bros. Melee', 'ssbm');
+INSERT INTO games (name, alias) VALUES ('Super Smash Bros. Ultimate', 'ssbu');
+
+INSERT INTO rankings (region, game, released, detail) VALUES (1, 1, '2019-01-07', 'Panel lead by Unsure.');
 
 INSERT INTO players (tag) VALUES ('Kels');
 INSERT INTO players (tag) VALUES ('Michael');
@@ -19,9 +22,6 @@ INSERT INTO players (tag) VALUES ('Eggy');
 INSERT INTO players (tag) VALUES ('JustJoe');
 INSERT INTO players (tag) VALUES ('Skerzo');
 INSERT INTO players (tag) VALUES ('Hyunnies');
-
-INSERT INTO games (name) VALUES ('Super Smash Bros. Melee');
-INSERT INTO games (name) VALUES ('Super Smash Bros. Ultimate');
 
 INSERT INTO player_rankings (player, ranking, rank) VALUES (1, 1, 1);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (2, 1, 2);
