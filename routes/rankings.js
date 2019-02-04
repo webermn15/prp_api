@@ -3,16 +3,17 @@ const router = new Router();
 
 const db = require('../db');
 
-router.post('/region/all', (req, res) => {
-	console.log(req.body)
-	const { gameId } = req.body;
-	db.rankingsDb.getRankingsForRegion(gameId, 1)
+router.post('/recent', (req, res) => {
+	console.log('/recent api endpoint has been hit');
+	const { gameAlias } = req.body;
+	db.rankingsDb.getRecentUploads(gameAlias)
 		.then(data => {
-			console.log('data from rankingsDb query: ', data)
-			res.send({'ranks': data.rows})
+			res.send({
+				recentlyUploaded: data.rows,
+				lastUpdated: new Date()
+			});
 		})
 		.catch(err => console.log(err));
-	// res.send({'some': 'data'})
 })
 
 module.exports = router;
