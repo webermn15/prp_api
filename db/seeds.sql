@@ -1,13 +1,14 @@
 INSERT INTO users (username) VALUES ('michael');
 
-INSERT INTO regions (region_name, level) VALUES ('Chicago', 'local');
-INSERT INTO regions (region_name, level) VALUES ('SoCal', 'local');
+INSERT INTO regions (region_name, region_alias, level) VALUES ('Chicago', 'chicago', 'local');
+INSERT INTO regions (region_name, region_alias, level) VALUES ('Southern California', 'socal', 'regional');
 
-INSERT INTO games (game_name, alias) VALUES ('Super Smash Bros. Melee', 'ssbm');
-INSERT INTO games (game_name, alias) VALUES ('Super Smash Bros. Ultimate', 'ssbu');
+INSERT INTO games (game_name, game_alias) VALUES ('Super Smash Bros. Melee', 'ssbm');
+INSERT INTO games (game_name, game_alias) VALUES ('Super Smash Bros. Ultimate', 'ssbu');
 
-INSERT INTO rankings (ranking_region, ranking_game, published, ranking_detail) VALUES (1, 'ssbm', '2019-01-07', 'Panel lead by Unsure.');
-INSERT INTO rankings (ranking_region, ranking_game, published, ranking_detail) VALUES (2, 'ssbm', '2018-12-15', '3 and a half month ranking period.');
+INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (1, 'ssbm', '2019-01-07', 'Fall 2018 Season', 'Panel lead by Unsure.');
+INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (2, 'ssbm', '2018-12-15', 'Summer-Fall 2018', '3 and a half month ranking period.');
+INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (1, 'ssbm', '2018-09-30', 'Summer 2018 Season', 'Pleeba, Nox excluded due to inactivity.');
 
 INSERT INTO players (player_tag) VALUES ('Kels');
 INSERT INTO players (player_tag) VALUES ('Michael');
@@ -46,6 +47,9 @@ INSERT INTO players (player_tag) VALUES ('Kurv');
 INSERT INTO players (player_tag) VALUES ('Zack Fair');
 INSERT INTO players (player_tag) VALUES ('null');
 INSERT INTO players (player_tag) VALUES ('Shoyo');
+INSERT INTO players (player_tag) VALUES ('Trix');
+INSERT INTO players (player_tag) VALUES ('Pooch');
+INSERT INTO players (player_tag) VALUES ('Q?');
 
 INSERT INTO player_rankings (player, ranking, rank) VALUES (1, 1, 1);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (2, 1, 2);
@@ -62,6 +66,21 @@ INSERT INTO player_rankings (player, ranking, rank) VALUES (12, 1, 12);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (13, 1, 13);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (14, 1, 14);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (15, 1, 15);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (1, 3, 1);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (2, 3, 2);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (3, 3, 3);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (4, 3, 4);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (7, 3, 5);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (6, 3, 6);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (13, 3, 7);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (8, 3, 8);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (12, 3, 9);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (5, 3, 10);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (10, 3, 11);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (11, 3, 12);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (38, 3, 13);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (39, 3, 14);
+INSERT INTO player_rankings (player, ranking, rank) VALUES (40, 3, 15);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (16, 2, 1);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (17, 2, 2);
 INSERT INTO player_rankings (player, ranking, rank) VALUES (18, 2, 3);

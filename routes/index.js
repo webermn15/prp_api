@@ -1,7 +1,9 @@
 const games = require('./games');
 const rankings = require('./rankings');
+const regions = require('./regions');
 
 module.exports = (app) => {
 	app.use('/api/games', games)
 	app.use('/api/rankings', rankings)
+	app.use('/api/regions', regions)
 }

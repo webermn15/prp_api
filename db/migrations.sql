@@ -12,6 +12,7 @@ CREATE TABLE users(
 CREATE TABLE regions(
 	region_id SERIAL PRIMARY KEY,
 	region_name TEXT NOT NULL,
+	region_alias TEXT NOT NULL,
 	level scope NOT NULL,
 	region_image BYTEA
 );
@@ -19,16 +20,17 @@ CREATE TABLE regions(
 CREATE TABLE games(
 	game_id SERIAL PRIMARY KEY,
 	game_name TEXT NOT NULL,
-	alias TEXT NOT NULL,
-	CONSTRAINT unique_alias UNIQUE (alias)
+	game_alias TEXT NOT NULL,
+	CONSTRAINT unique_alias UNIQUE (game_alias)
 );
 
 CREATE TABLE rankings(
 	ranking_id SERIAL PRIMARY KEY,
-	ranking_game TEXT NOT NULL REFERENCES games(alias),
+	ranking_game TEXT NOT NULL REFERENCES games(game_alias),
 	ranking_region INT NOT NULL REFERENCES regions(region_id),
 	last_ranking INT REFERENCES rankings(ranking_id),
 	published DATE NOT NULL,
+	ranking_title TEXT NOT NULL,
 	ranking_detail TEXT,
 	ranking_image BYTEA	
 );
