@@ -12,7 +12,7 @@ class Rankings {
 	}
 
 	getRankingById(rankingId) {
-		return this.db.query(`SELECT players.player_tag, players.sponsor_prefix, player_ranking_id, player, rank, ranking FROM player_rankings INNER JOIN rankings ON rankings.ranking_id=player_rankings.ranking INNER JOIN players ON players.player_id=player_rankings.player WHERE ranking = $1 ORDER BY rank ASC`, [rankingId])
+		return this.db.query(`SELECT players.player_tag, players.sponsor_prefix, player, rank, ranking FROM player_rankings INNER JOIN rankings ON rankings.ranking_id=player_rankings.ranking INNER JOIN players ON players.player_id=player_rankings.player WHERE ranking = $1 ORDER BY rank ASC`, [rankingId])
 	}
 
 }
