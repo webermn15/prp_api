@@ -11,6 +11,10 @@ class Rankings {
 		return this.db.query(`SELECT rankings.ranking_id, games.game_name, regions.region_name, regions.region_alias, regions.level, last_ranking, published, ranking_title, ranking_detail, rankings.ranking_image FROM rankings INNER JOIN games ON games.game_alias=rankings.ranking_game INNER JOIN regions ON regions.region_id=rankings.ranking_region WHERE ranking_game = $1 LIMIT 5`, [gameAlias])
 	}
 
+	getRankingById(rankingId) {
+		return this.db.query(`SELECT players.player_tag, players.sponsor_prefix, player_ranking_id, player, rank, ranking FROM player_rankings INNER JOIN rankings ON rankings.ranking_id=player_rankings.ranking INNER JOIN players ON players.player_id=player_rankings.player WHERE ranking = $1 ORDER BY rank ASC`, [rankingId])
+	}
+
 }
 
 module.exports = Rankings;

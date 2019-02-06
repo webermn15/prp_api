@@ -16,11 +16,9 @@ router.post('/recent', (req, res) => {
 })
 
 router.post('/region', (req, res) => {
-	console.log('/api/rankings/region endpoint: ', req.body);
 	const { regionAlias, gameAlias } = req.body;
 	db.rankingsDb.getRankingsForRegion(regionAlias, gameAlias)
 		.then(data => {
-			console.log('returned data from /api/rankings/region endpoint: ', data);
 			const formattedRankings = data.rows.map(({region_name, region_alias, level, region_image, ...newObj}) => newObj)
 			res.send({
 				region_name: data.rows[0].region_name,
@@ -31,6 +29,17 @@ router.post('/region', (req, res) => {
 			});
 		})
 		.catch(err => console.log(err));
+})
+
+router.post('/detail', (req, res) => {
+	const { rankingId} = req.body;
+	db.rankingsDb.getRankingById(rankingId)
+		.then(data => {
+			res.send({
+				ranks: data.rows
+			});
+		})
+		.catch(err => console.log('error in getRankingById: ', err));
 })
 
 module.exports = router;
