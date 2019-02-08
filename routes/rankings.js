@@ -1,6 +1,10 @@
 const Router = require('express-promise-router');
 const router = new Router();
 
+// formatting utilities
+const formatRanks = require('../utils/formatRanks');
+const combineRankDuplicates = require('../utils/combineRankDuplicates');
+
 const db = require('../db');
 
 router.post('/recent', (req, res) => {
@@ -19,7 +23,7 @@ router.post('/region', (req, res) => {
 	const { regionAlias, gameAlias } = req.body;
 	db.rankingsDb.getRankingsForRegion(regionAlias, gameAlias)
 		.then(data => {
-			const formattedRankings = data.rows.map(({region_name, region_alias, level, region_image, ...newObj}) => newObj)
+			const formattedRankings = data.rows.map(({region_name, region_alias, level, region_image, ...newObj}) => newObj);
 			res.send({
 				region_name: data.rows[0].region_name,
 				region_alias: data.rows[0].region_alias,
@@ -35,8 +39,11 @@ router.post('/detail', (req, res) => {
 	const { rankingId} = req.body;
 	db.rankingsDb.getRankingById(rankingId)
 		.then(data => {
+			const formattedRankings = formatRanks(data.rows);
+			const combinedDuplicates = combineRankDuplicates(formattedRankings)
 			res.send({
-				ranks: data.rows
+				title: data.rows[0].ranking_title,
+				ranks: combinedDuplicates
 			});
 		})
 		.catch(err => console.log('error in getRankingById: ', err));

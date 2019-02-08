@@ -24,6 +24,13 @@ CREATE TABLE games(
 	CONSTRAINT unique_alias UNIQUE (game_alias)
 );
 
+CREATE TABLE game_characters(
+	game_characters_id SERIAL PRIMARY KEY,
+	character_game TEXT NOT NULL REFERENCES games(game_alias),
+	character_name TEXT NOT NULL,
+	character_image BYTEA
+);
+
 CREATE TABLE rankings(
 	ranking_id SERIAL PRIMARY KEY,
 	ranking_game TEXT NOT NULL REFERENCES games(game_alias),
@@ -46,5 +53,15 @@ CREATE TABLE player_rankings(
 	player_ranking_id SERIAL PRIMARY KEY,
 	player INT NOT NULL REFERENCES players(player_id),
 	ranking INT NOT NULL REFERENCES rankings(ranking_id),
-	rank INT NOT NULL
+	rank INT NOT NULL,
+	previous_rank INT
 );
+
+CREATE TABLE player_ranking_characters(
+	prc_id SERIAL PRIMARY KEY,
+	player_ranking INT NOT NULL REFERENCES player_rankings(player_ranking_id),
+	player_ranking_game TEXT NOT NULL REFERENCES games(game_alias),
+	character_played INT NOT NULL REFERENCES game_characters(game_characters_id)
+);
+
+
