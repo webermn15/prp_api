@@ -28,7 +28,7 @@ CREATE TABLE game_characters(
 	game_characters_id SERIAL PRIMARY KEY,
 	character_game TEXT NOT NULL REFERENCES games(game_alias),
 	character_name TEXT NOT NULL,
-	character_image BYTEA
+	character_image TEXT NOT NULL
 );
 
 CREATE TABLE rankings(
@@ -61,7 +61,8 @@ CREATE TABLE player_ranking_characters(
 	prc_id SERIAL PRIMARY KEY,
 	player_ranking INT NOT NULL REFERENCES player_rankings(player_ranking_id),
 	player_ranking_game TEXT NOT NULL REFERENCES games(game_alias),
-	character_played INT NOT NULL REFERENCES game_characters(game_characters_id)
+	character_played INT NOT NULL REFERENCES game_characters(game_characters_id),
+	main BOOLEAN NOT NULL
 );
 
 
