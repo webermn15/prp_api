@@ -14,4 +14,15 @@ router.post('/', (req, res) => {
 		.catch(err => console.log(err));
 })
 
+router.post('/game', (req, res) => {
+	const { gameAlias } = req.body;
+	db.regionsDb.getRegionDataForGame(gameAlias)
+		.then(data => {
+			res.send({
+				regions: data.rows
+			})
+		})
+		.catch(err => console.log(err));
+})
+
 module.exports = router;
