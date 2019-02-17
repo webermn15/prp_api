@@ -12,4 +12,16 @@ router.get('/all', (req, res) => {
 		.catch(err => console.log(err));
 })
 
+router.post('/characters', (req, res) => {
+	const { gameAlias } = req.body;
+	db.gamesDb.getCharactersForGame(gameAlias)
+		.then(data => {
+			console.log(data);
+			res.send({
+				characters: data.rows
+			});
+		})
+		.catch(err => console.log(err));
+})
+
 module.exports = router;

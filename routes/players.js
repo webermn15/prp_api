@@ -17,4 +17,16 @@ router.post('/detail', (req, res) => {
 		.catch(err => console.log(err));
 })
 
+router.post('/match', (req, res) => {
+	const { gameAlias, match } = req.body;
+	db.playersDb.matchPlayersToString(gameAlias, match)
+		.then(data => {
+			console.log(data)
+			res.send({
+				players: data.rows
+			});
+		})
+		.catch(err => console.log(err));
+})
+
 module.exports = router;
