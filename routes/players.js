@@ -21,9 +21,8 @@ router.post('/match', (req, res) => {
 	const { gameAlias, match } = req.body;
 	db.playersDb.matchPlayersToString(gameAlias, match)
 		.then(data => {
-			console.log(data)
 			res.send({
-				players: data.rows
+				matchedPlayers: data.rows
 			});
 		})
 		.catch(err => console.log(err));

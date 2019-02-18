@@ -12,7 +12,7 @@ class Players {
 	}
 
 	matchPlayersToString(gameAlias, match) {
-		return this.db.query(`SELECT DISTINCT ON (player_id) player_id, player_tag, sponsor_prefix FROM players INNER JOIN player_rankings ON player_rankings.player=player_id INNER JOIN rankings ON rankings.ranking_id=player_rankings.ranking WHERE rankings.ranking_game = $1 AND LOWER(player_tag) LIKE $2`, [gameAlias, `%${match}%`])
+		return this.db.query(`SELECT DISTINCT ON (player_id) player_id AS value, player_tag AS label, sponsor_prefix FROM players INNER JOIN player_rankings ON player_rankings.player=player_id INNER JOIN rankings ON rankings.ranking_id=player_rankings.ranking WHERE rankings.ranking_game = $1 AND LOWER(player_tag) LIKE $2`, [gameAlias, `%${match}%`])
 	}
 
 }
