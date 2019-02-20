@@ -62,7 +62,7 @@ CREATE TABLE player_ranking_characters(
 	player_ranking INT NOT NULL REFERENCES player_rankings(player_ranking_id),
 	player_ranking_game TEXT NOT NULL REFERENCES games(game_alias),
 	character_played INT NOT NULL REFERENCES game_characters(game_characters_id),
-	main BOOLEAN NOT NULL
+	main BOOLEAN
 );
 
 

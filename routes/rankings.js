@@ -4,6 +4,7 @@ const router = new Router();
 // formatting utilities
 const formatRanks = require('../utils/formatRanks');
 const combineRankDuplicates = require('../utils/combineRankDuplicates');
+const formatDate = require('../utils/formatDate');
 
 const db = require('../db');
 
@@ -36,7 +37,7 @@ router.post('/region', (req, res) => {
 })
 
 router.post('/detail', (req, res) => {
-	const { rankingId} = req.body;
+	const { rankingId } = req.body;
 	db.rankingsDb.getRankingById(rankingId)
 		.then(data => {
 			const formattedRankings = formatRanks(data.rows);
@@ -47,6 +48,21 @@ router.post('/detail', (req, res) => {
 			});
 		})
 		.catch(err => console.log('error in getRankingById: ', err));
+})
+
+router.post('/new', (req, res) => {
+	const { game, region, date, title, detail, ranks } = req.body;
+	const formattedDate = formatDate(date);
+	
+	db.rankingsDb.insertNewRanking(game, region, formattedDate, title, detail, ranks)
+		// .then(resolve => {
+		// 	console.log(resolve);
+		// })
+		// .catch(error => {
+		// 	console.log(error);
+		// })
+
+	res.send({'some': 'data'});
 })
 
 module.exports = router;
