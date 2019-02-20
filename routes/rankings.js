@@ -55,12 +55,12 @@ router.post('/new', (req, res) => {
 	const formattedDate = formatDate(date);
 	
 	db.rankingsDb.insertNewRanking(game, region, formattedDate, title, detail, ranks)
-		// .then(resolve => {
-		// 	console.log(resolve);
-		// })
-		// .catch(error => {
-		// 	console.log(error);
-		// })
+		.then(result => {
+			console.log(result);
+		})
+		.catch(error => {
+			console.log(error);
+		})
 
 	res.send({'some': 'data'});
 })
