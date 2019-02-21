@@ -109,9 +109,9 @@ INSERT INTO game_characters (character_game, character_name, character_image) VA
 INSERT INTO game_characters (character_game, character_name, character_image) VALUES ('ssbu', 'Zelda', 'ssbuzelda.png');
 INSERT INTO game_characters (character_game, character_name, character_image) VALUES ('ssbu', 'Zero Suit Samus', 'ssbuzerosuitsamus.png');
 
-INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (1, 'ssbm', '2019-01-07', 'Fall 2018 Season', 'Panel lead by Unsure.');
-INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (2, 'ssbm', '2018-12-15', 'Summer-Fall 2018', '3 and a half month ranking period.');
-INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (1, 'ssbm', '2018-09-30', 'Summer 2018 Season', 'Pleeba, Nox excluded due to inactivity.');
+INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (1, 'ssbm', '2019-01-07', 'Fall 2018 Season', '<h1>Panel lead by Unsure.</h1>');
+INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (2, 'ssbm', '2018-12-15', 'Summer-Fall 2018', '<h2>3 and a half month ranking period.</h2>');
+INSERT INTO rankings (ranking_region, ranking_game, published, ranking_title, ranking_detail) VALUES (1, 'ssbm', '2018-09-30', 'Summer 2018 Season', '<h1>CHICAGO! HEY IM WALKIN HERE</h1><p>Pleeba, Nox excluded due to inactivity.</p>');
 
 INSERT INTO players (player_tag) VALUES ('Kels');
 INSERT INTO players (player_tag) VALUES ('Michael');

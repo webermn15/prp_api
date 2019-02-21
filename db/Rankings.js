@@ -14,7 +14,7 @@ class Rankings {
 	}
 
 	getRankingById(rankingId) {
-		return this.db.query(`SELECT players.player_tag, players.sponsor_prefix, player, rank, previous_rank, ranking, game_characters.character_name, game_characters.character_image, rankings.ranking_title, player_ranking_characters.main FROM player_rankings INNER JOIN rankings ON rankings.ranking_id=player_rankings.ranking INNER JOIN players ON players.player_id=player_rankings.player INNER JOIN player_ranking_characters ON player_ranking_characters.player_ranking=player_rankings.player_ranking_id INNER JOIN game_characters ON game_characters.game_characters_id=player_ranking_characters.character_played WHERE ranking = $1 ORDER BY rank ASC`, [rankingId])
+		return this.db.query(`SELECT players.player_tag, players.sponsor_prefix, player, rank, previous_rank, ranking, game_characters.character_name, game_characters.character_image, rankings.ranking_title, rankings.ranking_detail, player_ranking_characters.main FROM player_rankings INNER JOIN rankings ON rankings.ranking_id=player_rankings.ranking INNER JOIN players ON players.player_id=player_rankings.player INNER JOIN player_ranking_characters ON player_ranking_characters.player_ranking=player_rankings.player_ranking_id INNER JOIN game_characters ON game_characters.game_characters_id=player_ranking_characters.character_played WHERE ranking = $1 ORDER BY rank ASC`, [rankingId])
 	}
 
 	insertNewRanking(game, region, date, title, detail, ranks) {

@@ -45,6 +45,7 @@ router.post('/detail', (req, res) => {
 			const combinedDuplicates = combineRankDuplicates(formattedRankings)
 			res.send({
 				title: data.rows[0].ranking_title,
+				detail: data.rows[0].ranking_detail,
 				ranks: combinedDuplicates
 			});
 		})
