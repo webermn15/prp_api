@@ -13,6 +13,7 @@ router.post('/recent', (req, res) => {
 	db.rankingsDb.getRecentUploads(gameAlias)
 		.then(data => {
 			res.send({
+				gameName: data.rows[0].game_name,
 				recentlyUploaded: data.rows,
 				lastUpdated: new Date()
 			});
@@ -56,13 +57,12 @@ router.post('/new', (req, res) => {
 	
 	db.rankingsDb.insertNewRanking(game, region, formattedDate, title, detail, ranks)
 		.then(result => {
-			console.log(result);
+			res.sendStatus(200);
 		})
 		.catch(error => {
 			console.log(error);
+			res.sendStatus(400);
 		})
-
-	res.send({'some': 'data'});
 })
 
 module.exports = router;
