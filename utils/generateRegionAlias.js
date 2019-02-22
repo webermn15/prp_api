@@ -1,3 +1,3 @@
 module.exports = string => {
-	return string.replace(/\s+/g, '-').toLowerCase();
+	return string.toLowerCase().replace(/\s+/g, '-');
 }

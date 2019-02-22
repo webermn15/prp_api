@@ -18,8 +18,20 @@ router.post('/detail', (req, res) => {
 })
 
 router.post('/match', (req, res) => {
+	const { match } = req.body;
+	db.playersDb.matchPlayersToString(match)
+		.then(data => {
+			console.log('data returned in match endpoint: ', data);
+			res.send({
+				matchedPlayers: data.rows
+			});
+		})
+		.catch(err => console.log(err));
+})
+
+router.post('/game/match', (req, res) => {
 	const { gameAlias, match } = req.body;
-	db.playersDb.matchPlayersToString(gameAlias, match)
+	db.playersDb.matchPlayersForGameToString(gameAlias, match)
 		.then(data => {
 			res.send({
 				matchedPlayers: data.rows
