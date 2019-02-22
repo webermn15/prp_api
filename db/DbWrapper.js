@@ -1,13 +1,17 @@
 require('dotenv').config();
 const { Pool } = require('pg');
 
+const connectionString = process.env.DATABASE_URL
+
 /* 
 * should wrap logging into these methods to make it easier to trace errors *
 */
 
 class DbWrapper {
 	constructor() {
-		this.pool = new Pool();
+		this.pool = new Pool({
+			connectionString: connectionString
+		});
 	}
 
 	// add logging to these convenience wrappers
