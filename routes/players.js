@@ -21,7 +21,6 @@ router.post('/match', (req, res) => {
 	const { match } = req.body;
 	db.playersDb.matchPlayersToString(match)
 		.then(data => {
-			console.log('data returned in match endpoint: ', data);
 			res.send({
 				matchedPlayers: data.rows
 			});
