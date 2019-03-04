@@ -56,13 +56,14 @@ router.post('/new', (req, res) => {
 	const { game, region, date, title, detail, ranks } = req.body;
 	const formattedDate = formatDate(date);
 	
+	console.log('hitting rankings new endpoint');
 	db.rankingsDb.insertNewRanking(game, region, formattedDate, title, detail, ranks)
 		.then(result => {
-			res.sendStatus(200);
+			res.status(201).send('Ranking Created');
 		})
 		.catch(error => {
 			console.log(error);
-			res.sendStatus(400);
+			res.status(500).send('Error creating ranking');
 		})
 })
 

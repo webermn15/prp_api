@@ -23,4 +23,16 @@ router.post('/characters', (req, res) => {
 		.catch(err => console.log(err));
 })
 
+router.get('/testroute', (req, res) => {
+	const gameAlias = 'ssbm';
+	db.gamesDb.getAllRegionsForGame(gameAlias)
+		.then(data => {
+			res.send({regions: data.rows})
+		})
+		.catch(err => {
+			console.log(err);
+			res.send({error: 'help'})
+		})
+})
+
 module.exports = router;
