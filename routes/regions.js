@@ -16,10 +16,8 @@ router.post('/', (req, res) => {
 
 router.post('/match', (req, res) => {
 	const { match } = req.body;
-	console.log('match from req.body: ', match);
 	db.regionsDb.matchRegionsToString(match)
 		.then(data => {
-			console.log('data returned from region matcher: ', data);
 			res.send({
 				regions: data.rows
 			})

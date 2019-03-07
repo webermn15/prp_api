@@ -1,6 +1,9 @@
 const Router = require('express-promise-router');
 const router = new Router();
 
+// formatting utilities
+const combinePlayerMatchDuplicates = require('../utils/combinePlayerMatchDuplicates');
+
 const db = require('../db');
 
 router.post('/detail', (req, res) => {
@@ -21,8 +24,10 @@ router.post('/match', (req, res) => {
 	const { match } = req.body;
 	db.playersDb.matchPlayersToString(match)
 		.then(data => {
+			const combined = combinePlayerMatchDuplicates(data.rows);
+			console.log('combined results in player match endpoint: ', combined);
 			res.send({
-				matchedPlayers: data.rows
+				matchedPlayers: combined
 			});
 		})
 		.catch(err => console.log(err));
