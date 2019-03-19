@@ -36,16 +36,4 @@ router.post('/game', (req, res) => {
 		.catch(err => console.log(err));
 })
 
-router.get('/testroute', (req, res) => {
-	const regionId = 1;
-	db.regionsDb.getAllGamesForRegion(regionId)
-		.then(data => {
-			res.send({games: data.rows})
-		})
-		.catch(err => {
-			console.log(err);
-			res.send({error: 'uh-oh'})
-		})
-})
-
 module.exports = router;
